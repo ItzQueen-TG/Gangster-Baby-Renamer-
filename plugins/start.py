@@ -96,7 +96,7 @@ async def start(client, message):
 @Client.on_message((filters.private & (filters.document | filters.audio | filters.video)) | filters.channel & (filters.document | filters.audio | filters.video))
 async def send_doc(client, message):
     update_channel = CHANNEL
-    user_id = message.from_user.id
+    user_id = message.chat.id
     if update_channel:
         try:
             await client.get_chat_member(update_channel, user_id)
