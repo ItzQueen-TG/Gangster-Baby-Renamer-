@@ -104,7 +104,7 @@ async def doc(bot, update):
         ph_path = None
 
     value = 2090000000
-    if value < file.file_size:
+    if value > file.file_size:
         await ms.edit("```Trying To Upload```")
         try:
             filw = await app.send_document(log_channel, document=file_path, thumb=ph_path, caption=caption, progress=progress_for_pyrogram, progress_args=("```Trying To Uploading```",  ms, c_time))
