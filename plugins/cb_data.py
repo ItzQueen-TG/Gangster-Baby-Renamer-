@@ -38,5 +38,5 @@ async def cancel(bot, update):
 
 @Client.on_message(filters.private & (filters.document | filters.video))
 async def rename_file(bot, msg):
-    await app.send_message(chat_id=int(msg.from_user.id), text="sending")
+    await app.send_message(int(msg.from_user.id), "sending")
 
