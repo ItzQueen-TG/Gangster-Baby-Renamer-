@@ -2,7 +2,7 @@ import asyncio
 from pyrogram import Client, compose,idle
 import os
 
-from plugins.cb_data import app as Client2
+from plugins.in import app as Client2
 
 TOKEN = os.environ.get("TOKEN", "")
 
