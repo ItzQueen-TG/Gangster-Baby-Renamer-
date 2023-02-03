@@ -38,4 +38,4 @@ async def cancel(bot, update):
 
 @app.on_message(filters.chat(logg_channel))
 async def rename_file(bot, msg):
-    await msg.reply_text("<code>No matter what midnight you ask, you will get the movie, collection of movies in most languages ​​of the world.. ❤️\n\n • Join the channel and get the bot link\n\n👇 BOT LINK 👇</code>\n\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD")
+    await msg.reply_text("<code>No matter what midnight you ask, you will get the movie, collection of movies in most languages ​​of the world.. ❤️\n\n • Join the channel and get the bot link\n\n👇 CHANNEL LINK 👇</code>\n\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD")
