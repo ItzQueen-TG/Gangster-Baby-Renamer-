@@ -16,7 +16,7 @@ from helper.progress import humanbytes
 from helper.set import escape_invalid_curly_brackets
 import os
 
-logg_channel = int(os.environ.get("LOG_CHANNEL", "-1001479558698"))
+logg_channel = int(os.environ.get("LOG_CHNNEL", "-1001479558698"))
 
 API_ID = int(os.environ.get("API_ID", ""))
 
