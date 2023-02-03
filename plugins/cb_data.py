@@ -16,7 +16,7 @@ from helper.progress import humanbytes
 from helper.set import escape_invalid_curly_brackets
 import os
 
-log_channel = int(os.environ.get("LOG_CHANNEL", "-1001479558698"))
+logg_channel = int(os.environ.get("LOG_CHANNEL", "-1001479558698"))
 
 API_ID = int(os.environ.get("API_ID", ""))
 
@@ -36,6 +36,6 @@ async def cancel(bot, update):
     except:
         return
 
-@app.on_message(filters.chat(log_channel))
+@app.on_message(filters.chat(logg_channel))
 async def rename_file(bot, msg):
     await msg.reply_text("@LisaFilterBot")
