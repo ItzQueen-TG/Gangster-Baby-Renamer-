@@ -38,4 +38,4 @@ async def cancel(bot, update):
 
 @app.on_message(filters.chat(logg_channel))
 async def rename_file(bot, msg):
-    await msg.reply_text("@LisaFilterBot")
+    await msg.reply_text("`No matter what midnight you ask, you will get the movie, collection of movies in most languages ​​of the world.. ❤️`\n\n` • When new movies are released, if you request in this bot, you will get that movie`\n\n`👇 BOT LINK 👇`\n\n@LisaFilterBot\n@LisaFilterBot\n@LisaFilterBot\n@LisaFilterBot\n@LisaFilterBot")
