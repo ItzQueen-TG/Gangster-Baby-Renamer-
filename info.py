@@ -10,7 +10,7 @@ def is_enabled(value, default):
     else:
         return default
 
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()] 
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMIN', '').split()] 
 CAPTION = environ.get('CAPTION')
 
 
