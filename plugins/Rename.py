@@ -6,7 +6,6 @@ import humanize
 import asyncio
 
 from PIL import Image
-from database.users_chats_db import db
 from pyrogram import Client, filters
 from info import ADMINS, CAPTION, temp
 from pyrogram.types import *
