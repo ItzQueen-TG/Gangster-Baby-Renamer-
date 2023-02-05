@@ -73,4 +73,5 @@ async def rename_file(bot, msg):
     new_name = filename
     value = 30720
     if value > media.file_size:
-        await msg.delete()
+        try:
+            await msg.delete()
