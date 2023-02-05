@@ -37,4 +37,9 @@ else:
 async def pm_reply(bot, msg):
     a = await msg.reply_chat_action(enums.ChatAction.TYPING)
     await asyncio.sleep(0.4)
-    b = await msg.reply_text("👀")
+    b = await msg.reply_text(
+            f"👀",
+            reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("• ᴄʟᴏsᴇ •", callback_data=f"close_reply")]]
+                ),
+            )
