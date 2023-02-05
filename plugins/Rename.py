@@ -71,7 +71,6 @@ async def rename_file(bot, msg):
     og_media = getattr(msg, msg.media.value)
     filename = og_media.file_name
     new_name = filename
-    filesize = humanbytes(og_media.file_size)
     value = 30720
-    if value < filesize:
+    if value < media.file_size:
         await msg.delete()
