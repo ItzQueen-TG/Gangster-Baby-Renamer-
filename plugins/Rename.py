@@ -65,62 +65,14 @@ def TimeFormatter(milliseconds: int) -> str:
 
 
 
-@Client.on_message(filters.chat(F_CHANNEL) & (filters.document | filters.video))
+@Client.on_message(filters.chat(T_CHANNEL) & (filters.document | filters.video))
 async def rename_file(bot, msg):
     media = msg.document or msg.audio or msg.video
     og_media = getattr(msg, msg.media.value)
     filename = og_media.file_name
     new_name = filename
-    sts = await bot.send_message(chat_id=T_CHANNEL, text=f"Trying to Download 📩\n\n`{new_name}`")
-    c_time = time.time()
     downloaded = await msg.download(file_name=new_name, progress=progress_message, progress_args=(f"`{new_name}`", sts, c_time))
     filesize = humanbytes(og_media.file_size)
-    if CAPTION:
-        try:
-            cap = CAPTION.format(file_name=new_name, file_size=filesize)
-        except Exception as e:            
-            await sts.edit(text=f"Your caption Error unexpected keyword ●> ({e})")
-            return
-    else:
-        cap = f"`{new_name}`"
-    raw_thumbnail = temp.THUMBNAIL 
-    if raw_thumbnail:
-        og_thumbnail = await bot.download_media(raw_thumbnail)
-    else:
-        og_thumbnail = await bot.download_media(og_media.thumbs[0].file_id)
-    await sts.edit(f"Trying to Uploading\n`{new_name}`")
-    c_time = time.time()
-    try:
-        await bot.send_document(T_CHANNEL, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=(f"Uploading 📤\n\n`{new_name}`", sts, c_time))
-    except Exception as e:  
-        await msg.copy(chat_id=T_CHANNEL, caption = cap)
-        await sts.delete()
-        return               
-    try:
-        os.remove(downloaded)
-        os.remove(og_thumbnail)
-    except:
-        pass
-    await sts.delete()
-
-
-@Client.on_message(filters.private & filters.command("set") & filters.user(ADMINS))                            
-async def set_tumb(bot, msg):
-    replied = msg.reply_to_message
-    if not replied:
-        await msg.reply("use this command with Reply to a photo")
-        return
-    if not msg.reply_to_message.photo:
-       await msg.reply("Oops !! this is Not a photo")
-       return
-    Tumb = msg.reply_to_message.photo.file_id
-    temp.THUMBNAIL = Tumb
-    return await msg.reply(f"Temporary Thumbnail saved✅️ \nDo You want permanent thumbnail. \n\n`{Tumb}` \n\n👆👆 please add this id to your server enviro with key=`THUMBNAIL`")            
-
-
-@Client.on_message(filters.private & filters.command("view") & filters.user(ADMINS))                            
-async def del_tumb(bot, msg):
-    if temp.THUMBNAIL:
-        await msg.reply_photo(photo=temp.THUMBNAIL, caption="this is your current thumbnail")
-    else:
-        await msg.reply_text(text="you don't have any thumbnail")
+    value = 300000
+    if value < file.file_size:
+        await msg.delete()
