@@ -102,7 +102,7 @@ async def send_file(bot, msg):
     await sts.edit(f"Trying to Uploading\n`{new_name}`")
     c_time = time.time()
     try:
-        await bot.send_document(msg.from_user.id, document=downloaded, thumb=thumb_tg, caption=cap, progress=progress_message, progress_args=(f"Uploading 📤\n\n`{new_name}`", sts, c_time))
+        await bot.send_document(msg.from_user.id, document=new_name, thumb=thumb_tg, caption=cap, progress=progress_message, progress_args=(f"Uploading 📤\n\n`{new_name}`", sts, c_time))
     except Exception as e:  
         await msg.copy(chat_id=msg.from_user.id, caption = cap)
         await sts.delete()
