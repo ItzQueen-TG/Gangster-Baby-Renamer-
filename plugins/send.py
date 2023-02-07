@@ -85,7 +85,7 @@ async def send_file(bot, msg):
     try:
      	path = await msg.download(message=media, progress=progress_message, progress_args=(f"`{new_name}`", sts, c_time))
     except Exception as e:
-     	await ms.edit(e)
+     	await sts.edit(e)
      	return 
     splitpath = path.split("/downloads/")
     dow_file_name = splitpath[1]
