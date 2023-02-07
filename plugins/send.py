@@ -10,6 +10,7 @@ from info import ADMINS, CAPTION, temp
 from pyrogram.types import *
 from pyrogram.errors import FloodWait
 
+PROGRESS_BAR = "\n\n📁 : {b} | {c}\n🚀 : {a}%\n⚡ : {d}/s\n⏱️ : {f}"
 
 async def progress_message(current, total, ud_type, message, start):
     now = time.time()
@@ -80,8 +81,9 @@ async def send_file(bot, msg):
     new_name = filename
     sts = await bot.send_message(chat_id=msg.from_user.id, text=f"Trying to Download 📩\n\n`{new_name}`")
     c_time = time.time()
-    download = new_name
-    download = await msg.download(file_name=new_name, progress=progress_message, progress_args=(f"`{new_name}`", sts, c_time))
+    path = await msg.download(file_name=new_name, progress=progress_message, progress_args=(f"`{new_name}`", sts, c_time))
+    splitpath = path.split("/downloads/")
+
     filesize = humanbytes(og_media.file_size)
     if CAPTION:
         try:
