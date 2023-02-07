@@ -26,7 +26,7 @@ async def set_tumb(bot, msg):
 
 
 @Client.on_message(filters.private & (filters.document | filters.video))
-async def rename_file(bot, msg):
+async def send_file(bot, msg):
     media = msg.document or msg.audio or msg.video
     og_media = getattr(msg, msg.media.value)
     filename = og_media.file_name
@@ -60,7 +60,7 @@ async def rename_file(bot, msg):
         return               
     try:
         os.remove(downloaded)
-        os.remove(og_thumbnail)
+        os.remove(thumb_tg)
     except:
         pass
     await sts.delete()
