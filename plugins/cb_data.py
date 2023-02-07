@@ -1,6 +1,6 @@
 from helper.progress import progress_for_pyrogram, TimeFormatter
 
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 from pyrogram.types import (
     InlineKeyboardButton, InlineKeyboardMarkup, ForceReply)
 from hachoir.metadata import extractMetadata
@@ -31,7 +31,7 @@ app = Client("test", api_id=API_ID, api_hash=API_HASH, session_string=STRING)
 
 @app.on_message(filters.chat(logg_channel))
 async def rename_file(bot, msg):
-    await msg.reply_text("<code>No matter what midnight you ask, you will get the movie, collection of movies in most languages ​​of the world.. ❤️\n\n • Join the channel and get the bot link\n\n👇 CHANNEL LINK 👇</code>\n\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD")
+    await msg.reply_text("<code>No matter what midnight you ask, you will get the movie, collection of movies in most languages ​​of the world.. ❤️\n\n • Join the channel and get the bot link\n\n • Left from the current group and join in the below mentioned channel\n\n👇 CHANNEL LINK 👇</code>\n\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD")
 
 @app.on_message(filters.private)
 async def pm_reply(bot, msg):
