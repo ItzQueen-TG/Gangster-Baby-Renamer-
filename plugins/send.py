@@ -81,9 +81,16 @@ async def send_file(bot, msg):
     new_name = filename
     sts = await bot.send_message(chat_id=msg.from_user.id, text=f"Trying to Download 📩\n\n`{new_name}`")
     c_time = time.time()
-    download = new_name
-    download = await msg.download(file_name=new_name, progress=progress_message, progress_args=(f"`{new_name}`", sts, c_time))
-
+    file_path = f"downloads/{new_filename}"
+    try:
+     	path = await msg.download(message=media, progress=progress_message, progress_args=(f"`{new_name}`", sts, c_time))
+    except Exception as e:
+     	await ms.edit(e)
+     	return 
+    splitpath = path.split("/downloads/")
+    dow_file_name = splitpath[1]
+    old_file_name =f"downloads/{dow_file_name}"
+    os.rename(old_file_name,file_path)
     filesize = humanbytes(og_media.file_size)
     if CAPTION:
         try:
@@ -102,13 +109,13 @@ async def send_file(bot, msg):
     await sts.edit(f"Trying to Uploading\n`{new_name}`")
     c_time = time.time()
     try:
-        await bot.send_document(msg.from_user.id, document=new_name, thumb=thumb_tg, caption=cap, progress=progress_message, progress_args=(f"Uploading 📤\n\n`{new_name}`", sts, c_time))
+        await bot.send_document(msg.from_user.id, document=file_path, thumb=thumb_tg, caption=cap, progress=progress_message, progress_args=(f"Uploading 📤\n\n`{new_name}`", sts, c_time))
     except Exception as e:  
         await msg.copy(chat_id=msg.from_user.id, caption = cap)
         await sts.delete()
         return               
     try:
-        os.remove(downloaded)
+        os.remove(file_path)
         os.remove(thumb_tg)
     except:
         pass
