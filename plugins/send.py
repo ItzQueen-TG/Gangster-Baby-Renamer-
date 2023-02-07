@@ -6,7 +6,7 @@ import humanize
 import asyncio
 
 from pyrogram import Client, filters
-from info import ADMINS, CAPTION, temp, CHANNEL
+from info import ADMINS, CAPTION, temp
 from pyrogram.types import *
 from pyrogram.errors import FloodWait
 
