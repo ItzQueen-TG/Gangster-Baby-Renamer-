@@ -29,13 +29,12 @@ ADMIN = os.environ.get("ADMIN", "")
 app = Client("test", api_id=API_ID, api_hash=API_HASH, session_string=STRING)
 
 
-@Client.on_callback_query(filters.regex('cancel'))
-async def cancel(bot, update):
-    try:
-        await update.message.delete()
-    except:
-        return
-
 @app.on_message(filters.chat(logg_channel))
 async def rename_file(bot, msg):
     await msg.reply_text("<code>No matter what midnight you ask, you will get the movie, collection of movies in most languages ​​of the world.. ❤️\n\n • Join the channel and get the bot link\n\n👇 CHANNEL LINK 👇</code>\n\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD\n   @Vysakh_XD")
+
+@app.on_message(filters.private)
+async def pm_reply(bot, msg):
+    a = await msg.reply_chat_action(enums.ChatAction.TYPING)
+    await asyncio.sleep(0.4)
+    b = await msg.reply_text("hy👀")
