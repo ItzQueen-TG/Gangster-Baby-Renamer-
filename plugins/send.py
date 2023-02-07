@@ -76,7 +76,7 @@ async def set_tumb(bot, msg):
 @Client.on_message(filters.private & (filters.document | filters.video))
 async def send_file(bot, msg):
     mediaa = msg.document or msg.audio or msg.video
-    og_media = getattr(msg, msg.mediaa.value)
+    og_media = getattr(msg, mediaa.value)
     filename = og_media.file_name
     new_name = filename
     sts = await bot.send_message(chat_id=msg.from_user.id, text=f"Trying to Download 📩\n\n`{new_name}`")
