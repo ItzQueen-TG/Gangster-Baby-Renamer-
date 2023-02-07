@@ -81,7 +81,7 @@ async def send_file(bot, msg):
     new_name = filename
     sts = await bot.send_message(chat_id=msg.from_user.id, text=f"Trying to Download 📩\n\n`{new_name}`")
     c_time = time.time()
-    file_path = f"downloads/{new_filename}"
+    file_path = f"downloads/{filename}"
     try:
      	path = await msg.download(message=media, progress=progress_message, progress_args=(f"`{new_name}`", sts, c_time))
     except Exception as e:
