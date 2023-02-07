@@ -81,8 +81,8 @@ async def send_file(bot, msg):
     new_name = filename
     sts = await bot.send_message(chat_id=msg.from_user.id, text=f"Trying to Download 📩\n\n`{new_name}`")
     c_time = time.time()
-    path = await msg.download(file_name=new_name, progress=progress_message, progress_args=(f"`{new_name}`", sts, c_time))
-    splitpath = path.split("/downloads/")
+    download = new_name
+    download = await msg.download(file_name=new_name, progress=progress_message, progress_args=(f"`{new_name}`", sts, c_time))
 
     filesize = humanbytes(og_media.file_size)
     if CAPTION:
