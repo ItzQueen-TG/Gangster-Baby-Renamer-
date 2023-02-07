@@ -75,15 +75,15 @@ async def set_tumb(bot, msg):
 
 @Client.on_message(filters.private & (filters.document | filters.video))
 async def send_file(bot, msg):
-    media = msg.document or msg.audio or msg.video
-    og_media = getattr(msg, msg.media.value)
+    mediaa = msg.document or msg.audio or msg.video
+    og_media = getattr(msg, msg.mediaa.value)
     filename = og_media.file_name
     new_name = filename
     sts = await bot.send_message(chat_id=msg.from_user.id, text=f"Trying to Download 📩\n\n`{new_name}`")
     c_time = time.time()
     file_path = f"downloads/{filename}"
     try:
-     	path = await msg.download_media(message=media, progress=progress_message, progress_args=(f"`{new_name}`", sts, c_time))
+     	path = await msg.download_media(message=media, progress=progress_message, progress_args=(f"Downloading 📩\n\n`{new_name}`", sts, c_time))
     except Exception as e:
      	await sts.edit(e)
      	return 
